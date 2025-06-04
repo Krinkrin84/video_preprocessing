@@ -13,7 +13,7 @@ def extract_frames(input_folder, output_folder, n):
 
     # Loop through each file in the input folder
     for filename in os.listdir(input_folder):
-        if filename.endswith('.avi'):
+        if filename.endswith(('.avi', '.mp4')):  # Updated to include .mp4
             video_name = os.path.splitext(filename)[0]
 
             video_path = os.path.join(input_folder, filename)
@@ -52,8 +52,8 @@ def extract_frames(input_folder, output_folder, n):
     print(f"Frames saved across folders.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Extract frames from MKV videos.')
-    parser.add_argument('input_folder', type=str, help='Path to the input folder containing MKV videos')
+    parser = argparse.ArgumentParser(description='Extract frames from AVI and MP4 videos.')  # Updated description
+    parser.add_argument('input_folder', type=str, help='Path to the input folder containing AVI or MP4 videos')
     parser.add_argument('output_folder', type=str, help='Path to the output folder to save JPEG images')
     parser.add_argument('n', type=int, help='Extract every nth frame')
 
